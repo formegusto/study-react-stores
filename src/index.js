@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
-import rootReducer from './redux/modules';
-import { Provider } from 'react-redux';
+import RootStore from './mobx/stores';
+import { Provider } from 'mobx-react';
 
-const store = createStore(rootReducer)
+// const store = createStore(rootReducer)
+const store = new RootStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
+  <Provider {...store}>
+    <App/>
   </Provider>,
   document.getElementById('root')
 );

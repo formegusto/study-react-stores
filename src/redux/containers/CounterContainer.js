@@ -19,7 +19,7 @@ function CounterContainer({number, increment, decrement, incrementwo}) {
     
     return (
         <Counter
-            value={number}
+            number={number}
             onIncrement={onIncrement}
             onDecrement={onDecrement} 
             onIncrementwo={onIncrementwo}
