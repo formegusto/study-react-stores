@@ -1,5 +1,5 @@
+import CounterContainer from 'mobx/containers/CounterContainer';
 import React from 'react';
-import CounterContainer from './redux/containers/CounterContainer';
 
 function App() {
   return (
