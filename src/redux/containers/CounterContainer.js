@@ -4,6 +4,7 @@ import Counter from '../components/Counter';
 import { decrement, increment, incrementwo } from '../modules/actions';
 
 function CounterContainer({number, increment, decrement, incrementwo}) {
+    console.log("Rendering Container");
     const onIncrement = useCallback(() => {
         increment();
     },[increment]);
@@ -13,7 +14,6 @@ function CounterContainer({number, increment, decrement, incrementwo}) {
     },[decrement]);
 
     const onIncrementwo = useCallback((amount) => {
-        console.log(amount);
         incrementwo(amount);
     },[incrementwo]);
     
