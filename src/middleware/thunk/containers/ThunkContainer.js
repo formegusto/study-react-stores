@@ -6,8 +6,9 @@ import { getPost, getUsers} from '../modules/thunk.js';
 
 function ThunkContainer({thunk, getPost, getUsers}){
     useEffect(() => {
-        getPost(12);
-    }, [getPost]);
+        // getPost(12);
+        getUsers()
+    }, [getUsers]);
 
     return (
         <ThunkComponent

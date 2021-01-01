@@ -14,6 +14,7 @@ export default function thunkReducer(state=thunkStore, action){
         case GET_POST_SUCCESS:
             return {
                 ...state,
+                post: action.payload,
                 loading: {
                     ...state.loading,
                     GET_POST: false,
