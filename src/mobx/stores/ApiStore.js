@@ -1,5 +1,5 @@
 import { getPostAPI } from "mobx/api/postApi";
-import { observable, action } from "mobx";
+import { observable, action, runInAction } from "mobx";
 
 class ApiStore{
     @observable
@@ -9,17 +9,18 @@ class ApiStore{
     fetchPost = (id) => {
         this.post = null;
 
-        getPostAPI(id).then(this.fetchPostSuccess, this.fetchPostFailure);
-    }
-
-    @action.bound
-    fetchPostSuccess = (response) => {
-        this.post = response.data;
-    }
-
-    @action.bound
-    fetchPostFailure = (error) => {
-        this.post = error;
+        getPostAPI(id).then(
+            response => {
+                runInAction(() => {
+                    this.post = response.data
+                })
+            },
+            error => {
+                runInAction(() => {
+                    this.post = error
+                });
+            }
+        );
     }
 }
 
