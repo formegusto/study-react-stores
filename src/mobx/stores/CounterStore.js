@@ -1,24 +1,24 @@
-import { action, observable } from "mobx";
+import { action, decorate, observable } from "mobx";
 
 class CounterStore {
-    root;
-
-    constructor(root) {
-        this.root = root;
-    }
-
-    @observable
+    // @observable
     count = 0;
 
-    @action
+    // @action
     increase = () => {
         this.count += 1;
     }
 
-    @action
+    // @action
     decrease = () => {
         this.count -= 1;
     }
 }
+
+decorate(CounterStore,{
+    count: observable,
+    increase: action,
+    decrease: action,
+});
 
 export default CounterStore;
