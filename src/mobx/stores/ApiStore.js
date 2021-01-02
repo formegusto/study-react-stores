@@ -1,27 +1,20 @@
 import { getPostAPI } from "mobx/api/postApi";
-import { observable, action, runInAction } from "mobx";
+import { observable, action, runInAction, flow } from "mobx";
 
 class ApiStore{
-    @observable
-    post = null;
+    @observable post = null;
 
-    @action
-    fetchPost = (id) => {
+    fetchPost = flow(function * (id) {
         this.post = null;
 
-        getPostAPI(id).then(
-            response => {
-                runInAction(() => {
-                    this.post = response.data
-                })
-            },
-            error => {
-                runInAction(() => {
-                    this.post = error
-                });
-            }
-        );
-    }
+        try{
+            const response = yield getPostAPI(id);
+
+            this.post = response.data;
+        } catch(error) {
+            this.post = error; 
+        }
+    }).bind(this);
 }
 
 export default ApiStore;
