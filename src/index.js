@@ -25,9 +25,7 @@ import { Provider } from 'mobx-react';
 const store = new RootStore();
 
 ReactDOM.render(
-  <Provider {...store}>
-    <App/>
-  </Provider>,
+    <App/>,
   document.getElementById('root')
 );
 

@@ -1,17 +1,16 @@
-// import CounterContainer from 'mobx/containers/CounterContainer';
-import ThunkContainer from 'middleware/thunk/containers/ThunkContainer';
+import { SampleProvider } from 'contextAPI/contexts/sample';
 import React from 'react';
-// import CounterContainer from 'middleware/saga/counter/container/CounterContainer'
-// import ApiContainer from 'middleware/saga/useApi/container/ApiContainer';
-import CounterContainer from 'mobx/containers/CounterContainer';
-import ApiContainer from 'mobx/containers/ApiContainer';
+import LeftPane from './contextAPI/containers/LeftPane';
+import RightPane from './contextAPI/containers/RightPane';
 
 function App() {
   return (
-    <div>
-      <CounterContainer />
-      <ApiContainer />
-    </div>
+    <SampleProvider>
+      <div className="panes">
+        <LeftPane />
+        <RightPane />
+      </div>
+    </SampleProvider>
   );
 }
 
