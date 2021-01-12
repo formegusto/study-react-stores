@@ -1,22 +1,16 @@
-import { SampleConsumer } from 'contextAPI/contexts/sample';
+import { hocSample } from 'contextAPI/contexts/sample';
 import React from 'react';
 import SendsComponent from '../components/SendsComponent';
 
-function LeftPane() {
+function LeftPane({value, setValue}) {
     return (
-        <SampleConsumer>
-            {
-                (sample) => (
-                    <div className="pane">
-                        <SendsComponent 
-                            value={sample.state.value}
-                            setValue={sample.actions.setValue}
-                        />
-                    </div>
-                )
-            }
-        </SampleConsumer>
+        <div className="pane">
+            <SendsComponent 
+                value={value}
+                setValue={setValue}
+            />
+        </div>
     )
 }
 
-export default LeftPane;
+export default hocSample(LeftPane);

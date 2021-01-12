@@ -24,7 +24,25 @@ function SampleProvider({children}) {
     )
 }
 
+function hocSample(WrappedComponent) {
+    return function UseSample(props) {
+        return (
+            <SampleConsumer>
+                {
+                    ({state, actions}) => (
+                        <WrappedComponent
+                            value={state.value}
+                            setValue={actions.setValue}
+                            />
+                    )
+                }
+            </SampleConsumer>
+        )
+    }
+}
+
 export {
     SampleProvider,
     SampleConsumer,
+    hocSample,
 };
